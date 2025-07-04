@@ -1,0 +1,9 @@
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+*.DS_Store
+pleiades_results/
+spot_results
+data/
