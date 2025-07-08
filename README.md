@@ -113,7 +113,18 @@ This stereo dataset includes:
 - `img_b.tif` and `img_f.tif`: Two TIF images taken from different angles (e.g., forward and backward)
 - `img_b.xml` and `img_f.xml`: RPC metadata for the corresponding images
 - `WGS84toUTM.xml`: Projection definition in Proj4 format (used for georeferencing)
+- In case of Pleiades, the pair of images delivered by image provider are in 'jp2' format, we need to convert it into geotiff. Use function betow for the conversion
 
+```bash
+def convert_jp2_to_tif(left_jp2, right_jp2, left_img, right_img):
+    import os
+    # Convert JP2 files to TIFF using OpenJPEG
+    print("Converting JP2 files to TIFF...")
+    os.system(f"opj_decompress -i {left_jp2} -o {left_img}")
+    os.system(f"opj_decompress -i {right_jp2} -o {right_img}")
+    print("Tiff Conversion completed.")
+```
+- Intall AMES stereo pipeline before executing the conversion (Refer- https://github.com/akshaypatil05/ames_stereo/blob/main/README.md for installation instruction)
 ---
 
 ## 🛰️ Running MicMac
